@@ -1,0 +1,16 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+__pycache__/
+.vscode/
+.flaskenv
+pyvenv.cfg
+Lib/
+app/__pycache__/
+Scripts/
+Include/
+venv/
+tests/
+.env
+
+# AI stuff
+AGENTS.md

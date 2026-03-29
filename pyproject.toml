@@ -1,0 +1,29 @@
+[project]
+name = "password-manager"
+version = "0.1.0"
+description = ""
+authors = [{ name = "Jeffrey Nicholas", email = "jefnic23@gmail.com" }]
+requires-python = ">=3.11,<4"
+readme = "README.md"
+dependencies = [
+    "fastapi>=0.111.0,<0.112",
+    "uvicorn>=0.29.0,<0.30",
+    "python-dotenv>=1.0.1,<2",
+    "pydantic-settings>=2.2.1,<3",
+    "sqlalchemy[asyncio]>=2.0.29,<3",
+    "sqlmodel>=0.0.18,<0.0.19",
+    "passlib[bcrypt]>=1.7.4,<2",
+    "asyncpg>=0.29.0,<0.30",
+    "python-jose[cryptography]>=3.3.0,<4",
+    "fastapi-mail>=1.4.1,<2",
+]
+
+[tool.hatch.build.targets.sdist]
+include = ["src"]
+
+[tool.hatch.build.targets.wheel]
+include = ["src"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
