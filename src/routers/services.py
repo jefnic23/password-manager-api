@@ -43,6 +43,20 @@ async def get_service(
     return services_service.decrypt_password(encrypted_password)
 
 
+@router.delete("/services/{name}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_service(
+    current_user: CURRENT_USER_DEPENDENCY,
+    services_service: SERVICES_SERVICE_DEPENDENCY,
+    name: str,
+) -> None:
+    deleted = await services_service.delete(user_id=current_user.id, name=name)
+    if not deleted:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Password not found",
+        )
+
+
 @router.put("/services/{name}")
 async def update_service(
     current_user: CURRENT_USER_DEPENDENCY,
