@@ -9,7 +9,6 @@ app/__pycache__/
 Scripts/
 Include/
 venv/
-tests/
 .env
 
 # AI stuff

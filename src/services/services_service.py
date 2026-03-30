@@ -41,6 +41,20 @@ class ServicesService:
         self.session.add(new_service)
         await self.session.commit()
 
+    async def delete(self, user_id: int, name: str) -> bool:
+        statement = (
+            select(Service)
+            .where(Service.user_id == user_id)
+            .where(Service.name == name)
+        )
+        results = await self.session.exec(statement=statement)
+        service = results.first()
+        if not service:
+            return False
+        await self.session.delete(service)
+        await self.session.commit()
+        return True
+
     async def update(self, user_id: int, name: str, password: str) -> None:
         statement = (
             select(Service)
